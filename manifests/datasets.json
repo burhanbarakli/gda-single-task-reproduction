@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source": "official GDA Stack_RL2_range table-wood release",
+  "total_bytes": 2414110845,
+  "files": [
+    {"path": "base_config.json", "bytes": 9209, "sha256": "057996d46af4268149b2456a47a5d7ace563e5691a4d0e786f7e9e31bb0634ed"},
+    {"path": "dtw/stack_pair_info.json", "bytes": 120138273, "sha256": "73f997706b4c1191eb6bb73ee42a1c9101c65472badc3f478380a16700ac153a"},
+    {"path": "sim_demos/stack_r2l_down/rgb_120x160.hdf5", "bytes": 1022620880, "sha256": "3e365a2b805a2b623314aba10c6cbe343175736c158f63a733f979147558bd95"},
+    {"path": "sim_demos/stack_r2l_down/table-wood_120x160.hdf5", "bytes": 202113024, "sha256": "ba8150583a92e62ef9fb8b0ea88645b41e39b02f49dfcd6ca45c88efba0c05e9"},
+    {"path": "sim_demos/stack_r2l_up/rgb_120x160.hdf5", "bytes": 875403859, "sha256": "064649c246043b23975ec2a6146b648aa98d089d00072528a64a846d6f729c5f"},
+    {"path": "sim_demos/stack_r2l_up/table-wood_120x160.hdf5", "bytes": 193825600, "sha256": "4fa1d4e5a1945205e4f7f4868176fb9d9c0916b5494742013c3e55f1841c4439"}
+  ]
+}

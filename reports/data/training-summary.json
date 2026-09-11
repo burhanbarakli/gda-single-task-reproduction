@@ -1,0 +1,274 @@
+{
+  "generated_at": "2026-09-11T11:08:14.989086+00:00",
+  "source_root": "/mnt/c/CODES/GDA",
+  "summary": {
+    "completed_methods": 5,
+    "updates": 750000,
+    "training_hours": 77.25,
+    "training_days": 3.22
+  },
+  "methods": [
+    {
+      "method": "ot-sim2real",
+      "run_id": "g5_ot-sim2real_seed1_02",
+      "description": "Dengesiz optimal taşıma ve DTW eşleştirmesiyle temsil uyarlama.",
+      "color": "#ffb000",
+      "status": "completed",
+      "epochs": 500,
+      "seconds": 112776.314472027,
+      "hours": 31.33,
+      "gpu_allocated_mib": 5272,
+      "gpu_reserved_mib": 6318,
+      "log": "/mnt/c/CODES/GDA/experiments/runs/g5_ot-sim2real_seed1_02/20260907082634/logs/log.txt",
+      "final": {
+        "epoch": 500,
+        "M_embed": 0.9711872339248657,
+        "M_label": 0.049629174172878265,
+        "Optimizer/policy0_lr": 3.2953630589007324e-10,
+        "Policy_Grad_Norms": 0.046528396195747904,
+        "Time_Data_Loading": 1.7766428589820862,
+        "Time_Epoch": 3.1574575185775755,
+        "Time_Log_Info": 0.020528642336527507,
+        "Time_Process_Batch": 0.2808651328086853,
+        "Time_Train_Batch": 1.073203730583191,
+        "bc_loss": 0.0011655215825885534,
+        "ot_loss": 0.0031547891977243125,
+        "pi_diag": 0.9839896559715271,
+        "pi_sum": 0.9839896559715271,
+        "total_loss": 0.0014810005094235141
+      },
+      "checkpoint": {
+        "method": "ot-sim2real",
+        "run_id": "g5_ot-sim2real_seed1_02",
+        "epoch": 500,
+        "file": "model_epoch_500.pth",
+        "bytes": 1259824429,
+        "sha256": "1713ce826aa983ac82dffd63dd260b70a6797febe003d7d1cb93dd1a6261039b"
+      },
+      "development": {
+        "down": 6,
+        "up": 3,
+        "total": 9,
+        "n": 20
+      }
+    },
+    {
+      "method": "MMD",
+      "run_id": "g5_MMD_seed1_01",
+      "description": "Kaynak ve hedef temsil dağılımlarını MMD yardımcı kaybıyla yaklaştırma.",
+      "color": "#7c83ff",
+      "status": "completed",
+      "epochs": 500,
+      "seconds": 53338.863197168,
+      "hours": 14.82,
+      "gpu_allocated_mib": 5877,
+      "gpu_reserved_mib": 7330,
+      "log": "/mnt/c/CODES/GDA/experiments/runs/g5_MMD_seed1_01/20260908154714/logs/log.txt",
+      "final": {
+        "epoch": 500,
+        "MMD_loss": 0.021831160187721254,
+        "M_embed": 1.1898545026779175,
+        "Optimizer/policy0_lr": 3.2953630589007324e-10,
+        "Policy_Grad_Norms": 0.029571802451597892,
+        "Time_Data_Loading": 0.19197905858357747,
+        "Time_Epoch": 1.3441365242004395,
+        "Time_Log_Info": 0.006673574447631836,
+        "Time_Process_Batch": 0.2655177632967631,
+        "Time_Train_Batch": 0.8641241073608399,
+        "bc_loss": 0.0016539316357617887,
+        "total_loss": 0.02348509178807338
+      },
+      "checkpoint": {
+        "method": "MMD",
+        "run_id": "g5_MMD_seed1_01",
+        "epoch": 500,
+        "file": "model_epoch_500.pth",
+        "bytes": 1259824429,
+        "sha256": "d31da5b82fee05d33124ac97fe3a69514b4c55147653f473ae468e0a226cadc1"
+      },
+      "development": {
+        "down": 5,
+        "up": 2,
+        "total": 7,
+        "n": 20
+      }
+    },
+    {
+      "method": "cotrain",
+      "run_id": "g5_cotrain_seed1_01",
+      "description": "Aynı kaynak/hedef haklarıyla, uyarlama yardımcı kaybı olmadan ortak eğitim.",
+      "color": "#35d0a0",
+      "status": "completed",
+      "epochs": 500,
+      "seconds": 26121.157217371278,
+      "hours": 7.26,
+      "gpu_allocated_mib": 4100,
+      "gpu_reserved_mib": 4818,
+      "log": "/mnt/c/CODES/GDA/experiments/runs/g5_cotrain_seed1_01/20260909154542/logs/log.txt",
+      "final": {
+        "epoch": 500,
+        "Loss": 0.0011779794664471411,
+        "Optimizer/policy0_lr": 3.2953630589007324e-10,
+        "Policy_Grad_Norms": 0.027537511576603422,
+        "Time_Data_Loading": 0.10548626979192098,
+        "Time_Epoch": 0.7967864433924358,
+        "Time_Log_Info": 0.012518966197967529,
+        "Time_Process_Batch": 0.12140929698944092,
+        "Time_Train_Batch": 0.5501937945683797,
+        "total_loss": 0.0011779794664471411,
+        "bc_loss": 0.0011779794664471411
+      },
+      "checkpoint": {
+        "method": "cotrain",
+        "run_id": "g5_cotrain_seed1_01",
+        "epoch": 500,
+        "file": "model_epoch_500.pth",
+        "bytes": 1259823597,
+        "sha256": "9e2322c914e3299138be4641fd2128aadbeeb7c992cf5d92978596ae25998375"
+      },
+      "development": {
+        "down": 5,
+        "up": 3,
+        "total": 8,
+        "n": 20
+      }
+    },
+    {
+      "method": "source_only",
+      "run_id": "g5_source_only_seed1_01",
+      "description": "Yalnız kaynak gösterimleriyle davranış klonlama.",
+      "color": "#ff6b7a",
+      "status": "completed",
+      "epochs": 500,
+      "seconds": 46471.731247048,
+      "hours": 12.91,
+      "gpu_allocated_mib": 3490,
+      "gpu_reserved_mib": 4208,
+      "log": "/mnt/c/CODES/GDA/experiments/runs/g5_source_only_seed1_01/20260910093857/logs/log.txt",
+      "final": {
+        "epoch": 500,
+        "Loss": 0.001173824107972905,
+        "Optimizer/policy0_lr": 3.2953630589007324e-10,
+        "Policy_Grad_Norms": 0.02337243770766288,
+        "Time_Data_Loading": 0.3067391037940979,
+        "Time_Epoch": 1.1955965360005696,
+        "Time_Log_Info": 0.01078952153523763,
+        "Time_Process_Batch": 0.17486022313435873,
+        "Time_Train_Batch": 0.6827175259590149,
+        "total_loss": 0.001173824107972905,
+        "bc_loss": 0.001173824107972905
+      },
+      "checkpoint": {
+        "method": "source_only",
+        "run_id": "g5_source_only_seed1_01",
+        "epoch": 500,
+        "file": "model_epoch_500.pth",
+        "bytes": 1259823597,
+        "sha256": "888543ee2c2e09ce0cae27108151a9a8e9040ed4810135be9b53ada4c97f6697"
+      },
+      "development": null
+    },
+    {
+      "method": "target_only",
+      "run_id": "g5_target_only_seed1_01",
+      "description": "Yalnız 10 hedef gösterimle davranış klonlama.",
+      "color": "#62b6ff",
+      "status": "completed",
+      "epochs": 500,
+      "seconds": 39402.369737019,
+      "hours": 10.95,
+      "gpu_allocated_mib": 3490,
+      "gpu_reserved_mib": 4208,
+      "log": "/mnt/c/CODES/GDA/experiments/runs/g5_target_only_seed1_01/20260910223442/logs/log.txt",
+      "final": {
+        "epoch": 500,
+        "Loss": 0.00022068402654743598,
+        "Optimizer/policy0_lr": 3.2953630589007324e-10,
+        "Policy_Grad_Norms": 0.003222604689389673,
+        "Time_Data_Loading": 0.07677334547042847,
+        "Time_Epoch": 0.9747037490208944,
+        "Time_Log_Info": 0.014989181359608968,
+        "Time_Process_Batch": 0.17486775318781536,
+        "Time_Train_Batch": 0.6784200867017111,
+        "total_loss": 0.00022068402654743598,
+        "bc_loss": 0.00022068402654743598
+      },
+      "checkpoint": {
+        "method": "target_only",
+        "run_id": "g5_target_only_seed1_01",
+        "epoch": 500,
+        "file": "model_epoch_500.pth",
+        "bytes": 1259822829,
+        "sha256": "7ca6df713aebee8f20fbb166466ffc217399ef12d645fb86185b95f9a14f3ffa"
+      },
+      "development": null
+    }
+  ],
+  "evaluation": {
+    "pid": 134150,
+    "started_at": "2026-09-11T10:53:40.184503+00:00",
+    "driver_sha256": "c75b7fe46ee08bd76a0863e731bfd7db633e080633096af5cac50dd4f14a1995",
+    "training_queue_pid": 592,
+    "evaluation_plan_sha256": "cfc1a9133985d09712ae8bfb44aeb37e37dd5c1f134e020c11dde46fa00440dd",
+    "completed": [],
+    "status": "waiting_for_gpu",
+    "updated_at": "2026-09-11T10:53:41.206281+00:00",
+    "current_run": "g5_ot-sim2real_seed1_02"
+  },
+  "protocol": {
+    "schema_version": 1,
+    "protocol_id": "g5-single-task-seed1-v1",
+    "task": "Stack_RL2_range",
+    "domain_shift": "table-wood",
+    "scope": "simulation-only visual domain shift",
+    "methods": [
+      "ot-sim2real",
+      "MMD",
+      "cotrain",
+      "source_only",
+      "target_only"
+    ],
+    "training": {
+      "seed": 1,
+      "epochs": 500,
+      "steps_per_epoch": 300,
+      "updates_per_method": 150000,
+      "batch_size": 128,
+      "workers": 2,
+      "sequence_length": 16,
+      "frame_stack": 2,
+      "checkpoint_every_epochs": 50,
+      "rollout_during_training": false,
+      "algorithm": "diffusion_policy",
+      "encoder": "ResNet18",
+      "denoiser": "UNet"
+    },
+    "development_evaluation": {
+      "rollouts_per_view": 10,
+      "views": [
+        "down",
+        "up"
+      ],
+      "warning": "Model selection and debugging only; not final test."
+    },
+    "final_evaluation": {
+      "checkpoint_epoch": 500,
+      "rollouts_per_view_per_method": 50,
+      "total_rollouts": 500,
+      "down_reset_seeds": [
+        900000,
+        900049
+      ],
+      "up_reset_seeds": [
+        910000,
+        910049
+      ]
+    },
+    "official_commit": "114704b6b381b410cc14a51cb16952d1f4e8c69d",
+    "dependency_commits": {
+      "robosuite": "b9d8d3de5e3dfd1724f4a0e6555246c460407daa",
+      "mimicgen": "72bd767c255545f462e7ccfb2731f2e5d4c1d9bb",
+      "model-zoo-mugs-only": "fd9f480c021e0681579724741ed4755e492f5426"
+    }
+  }
+}

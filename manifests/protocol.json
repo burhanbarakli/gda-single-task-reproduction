@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "protocol_id": "g5-single-task-seed1-v1",
+  "task": "Stack_RL2_range",
+  "domain_shift": "table-wood",
+  "scope": "simulation-only visual domain shift",
+  "methods": ["ot-sim2real", "MMD", "cotrain", "source_only", "target_only"],
+  "training": {
+    "seed": 1,
+    "epochs": 500,
+    "steps_per_epoch": 300,
+    "updates_per_method": 150000,
+    "batch_size": 128,
+    "workers": 2,
+    "sequence_length": 16,
+    "frame_stack": 2,
+    "checkpoint_every_epochs": 50,
+    "rollout_during_training": false,
+    "algorithm": "diffusion_policy",
+    "encoder": "ResNet18",
+    "denoiser": "UNet"
+  },
+  "development_evaluation": {
+    "rollouts_per_view": 10,
+    "views": ["down", "up"],
+    "warning": "Model selection and debugging only; not final test."
+  },
+  "final_evaluation": {
+    "checkpoint_epoch": 500,
+    "rollouts_per_view_per_method": 50,
+    "total_rollouts": 500,
+    "down_reset_seeds": [900000, 900049],
+    "up_reset_seeds": [910000, 910049]
+  },
+  "official_commit": "114704b6b381b410cc14a51cb16952d1f4e8c69d",
+  "dependency_commits": {
+    "robosuite": "b9d8d3de5e3dfd1724f4a0e6555246c460407daa",
+    "mimicgen": "72bd767c255545f462e7ccfb2731f2e5d4c1d9bb",
+    "model-zoo-mugs-only": "fd9f480c021e0681579724741ed4755e492f5426"
+  }
+}
+

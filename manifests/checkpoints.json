@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "note": "Binary checkpoints are intentionally stored outside Git. These records identify the completed local models.",
+  "checkpoints": [
+    {"method": "ot-sim2real", "run_id": "g5_ot-sim2real_seed1_02", "epoch": 500, "file": "model_epoch_500.pth", "bytes": 1259824429, "sha256": "1713ce826aa983ac82dffd63dd260b70a6797febe003d7d1cb93dd1a6261039b"},
+    {"method": "MMD", "run_id": "g5_MMD_seed1_01", "epoch": 500, "file": "model_epoch_500.pth", "bytes": 1259824429, "sha256": "d31da5b82fee05d33124ac97fe3a69514b4c55147653f473ae468e0a226cadc1"},
+    {"method": "cotrain", "run_id": "g5_cotrain_seed1_01", "epoch": 500, "file": "model_epoch_500.pth", "bytes": 1259823597, "sha256": "9e2322c914e3299138be4641fd2128aadbeeb7c992cf5d92978596ae25998375"},
+    {"method": "source_only", "run_id": "g5_source_only_seed1_01", "epoch": 500, "file": "model_epoch_500.pth", "bytes": 1259823597, "sha256": "888543ee2c2e09ce0cae27108151a9a8e9040ed4810135be9b53ada4c97f6697"},
+    {"method": "target_only", "run_id": "g5_target_only_seed1_01", "epoch": 500, "file": "model_epoch_500.pth", "bytes": 1259822829, "sha256": "7ca6df713aebee8f20fbb166466ffc217399ef12d645fb86185b95f9a14f3ffa"}
+  ]
+}
+

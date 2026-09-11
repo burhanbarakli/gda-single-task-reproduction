@@ -1,0 +1,65 @@
+{
+  "status": "completed",
+  "role": "descriptive_development_only",
+  "created_at": "2026-09-10T21:02:30.590708+00:00",
+  "training_seed": 1,
+  "paired_reset_seeds_per_domain": 10,
+  "sources": {
+    "OT": {
+      "path": "experiments/pilot/ot-milestones-v1/epoch_500/evaluation.json",
+      "sha256": "60a8efd9dcb23df51ad77adf55c0c1b569b4cf7c071348d94e1890e27fd15e2f"
+    },
+    "MMD": {
+      "path": "experiments/pilot/mmd-500-v1/evaluation.json",
+      "sha256": "d4c993e4518debc9701fe8f729e1ce09ef48834fe3dbe6324e9c120913cb1751"
+    },
+    "cotrain": {
+      "path": "experiments/pilot/cotrain-500-v1/evaluation.json",
+      "sha256": "201fd1985b38de52b36144896faa480e4df14b3a05c4c58d20e40f6186bcba1d"
+    }
+  },
+  "domains": {
+    "down": {
+      "rollouts_per_method": 10,
+      "successes": {
+        "OT": 6,
+        "MMD": 5,
+        "cotrain": 5
+      },
+      "success_rates": {
+        "OT": 0.6,
+        "MMD": 0.5,
+        "cotrain": 0.5
+      },
+      "paired_initial_states_verified": true
+    },
+    "up": {
+      "rollouts_per_method": 10,
+      "successes": {
+        "OT": 3,
+        "MMD": 2,
+        "cotrain": 3
+      },
+      "success_rates": {
+        "OT": 0.3,
+        "MMD": 0.2,
+        "cotrain": 0.3
+      },
+      "paired_initial_states_verified": true
+    }
+  },
+  "interpretation": "Twenty fixed development rollouts per method are an early paired descriptive check. They do not replace the frozen 500-rollout final G5 comparison and are not used to select checkpoints, settings, or required baselines.",
+  "combined": {
+    "rollouts_per_method": 20,
+    "successes": {
+      "OT": 9,
+      "MMD": 7,
+      "cotrain": 8
+    },
+    "success_rates": {
+      "OT": 0.45,
+      "MMD": 0.35,
+      "cotrain": 0.4
+    }
+  }
+}

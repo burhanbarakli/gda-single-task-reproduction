@@ -1,0 +1,55 @@
+diff --git a/robomimic/scripts/ot_sim2real/ot_train.py b/robomimic/scripts/ot_sim2real/ot_train.py
+index 2f62bbf..25bb721 100644
+--- a/robomimic/scripts/ot_sim2real/ot_train.py
++++ b/robomimic/scripts/ot_sim2real/ot_train.py
+@@ -16,6 +16,7 @@ Args:
+ """
+ 
+ import argparse
++import random
+ import json
+ import numpy as np
+ import time
+@@ -84,6 +85,7 @@ def train(config, device, auto_remove_exp_dir=False, resume=False):
+     """
+ 
+     # first set seeds
++    random.seed(config.train.seed)
+     np.random.seed(config.train.seed)
+     torch.manual_seed(config.train.seed)
+ 
+diff --git a/robomimic/scripts/train.py b/robomimic/scripts/train.py
+index b8c5449..87337b8 100644
+--- a/robomimic/scripts/train.py
++++ b/robomimic/scripts/train.py
+@@ -16,6 +16,7 @@ Args:
+ """
+ 
+ import argparse
++import random
+ import json
+ import numpy as np
+ import time
+@@ -47,6 +48,7 @@ def train(config, device, auto_remove_exp_dir=False, resume=False):
+     """
+ 
+     # first set seeds
++    random.seed(config.train.seed)
+     np.random.seed(config.train.seed)
+     torch.manual_seed(config.train.seed)
+ 
+diff --git a/robomimic/utils/ot_dataset.py b/robomimic/utils/ot_dataset.py
+index a61c047..9ee3f39 100644
+--- a/robomimic/utils/ot_dataset.py
++++ b/robomimic/utils/ot_dataset.py
+@@ -194,8 +194,8 @@ class ChunkSamplingDTWTrainDataset(torch.utils.data.Dataset):
+ 
+         for k, v in self.hdf5_files.items():
+ 
+-            this_demos = list(v["data"].keys())
+-            random.shuffle(this_demos)
++            # Match SequenceDataset selection so BC and alignment share demo rights.
++            this_demos = sorted(v["data"].keys(), key=lambda name: int(name[5:]))
+             if (self.dataset_masks is not None):
+                 if k in self.dataset_masks:
+                     this_demos = this_demos[:self.dataset_masks[k]]

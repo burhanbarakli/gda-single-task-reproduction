@@ -1,0 +1,13 @@
+.venv/
+vendor/
+/data/
+/runs/
+/artifacts/
+/checkpoints/
+__pycache__/
+*.py[cod]
+*.pth
+*.hdf5
+*.h5
+*.log
+.DS_Store
