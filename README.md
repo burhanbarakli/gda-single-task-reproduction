@@ -32,6 +32,8 @@ bash scripts/run_all.sh /path/to/gda-data ./runs
 
 Tamamlanmış deneylerin çevrimdışı raporu [reports/gda-training-report.html](reports/gda-training-report.html) içindedir. Grafikler tarayıcıda JavaScript ile çizilir; internet bağlantısı gerekmez.
 
+Her eğitim için hazırlanan kısa Markdown kayıtları hem [`docs/experiments/`](docs/experiments/) altında hem de [Google Drive deney notları klasöründe](https://drive.google.com/drive/folders/1vGsubzHN8jb1d4dNg6B4scuhYRNzRWx4) bulunur. Drive klasörü paylaşılmamıştır; bağlı Google hesabıyla açılır.
+
 Yeni bir makinedeki koşuları canlı izlemek için:
 
 ```bash
