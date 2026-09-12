@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "experiment_id": "gda-stack-table-wood-checkpoint-sensitivity-seed1",
+  "status": "complete",
+  "role": "secondary_partially_post_hoc_development_analysis",
+  "protocol": {
+    "candidate_epochs": [100, 200, 300, 400, 500],
+    "down_reset_seeds": [800100, 800109],
+    "up_reset_seeds": [810100, 810109],
+    "rollouts_per_cell": 20,
+    "cells": 25,
+    "total_rollouts": 500,
+    "selection_order_descending": ["total_successes", "up_successes", "epoch"]
+  },
+  "selected": {
+    "ot-sim2real": {"epoch": 400, "down_successes": 7, "up_successes": 3, "total_successes": 10},
+    "MMD": {"epoch": 500, "down_successes": 5, "up_successes": 2, "total_successes": 7},
+    "cotrain": {"epoch": 200, "down_successes": 5, "up_successes": 7, "total_successes": 12},
+    "source_only": {"epoch": 500, "down_successes": 0, "up_successes": 0, "total_successes": 0},
+    "target_only": {"epoch": 300, "down_successes": 3, "up_successes": 0, "total_successes": 3}
+  },
+  "evaluations": [
+    {"method":"ot-sim2real","epoch":100,"down_successes":5,"up_successes":1,"total_successes":6},
+    {"method":"ot-sim2real","epoch":200,"down_successes":8,"up_successes":2,"total_successes":10},
+    {"method":"ot-sim2real","epoch":300,"down_successes":6,"up_successes":2,"total_successes":8},
+    {"method":"ot-sim2real","epoch":400,"down_successes":7,"up_successes":3,"total_successes":10},
+    {"method":"ot-sim2real","epoch":500,"down_successes":6,"up_successes":3,"total_successes":9},
+    {"method":"MMD","epoch":100,"down_successes":2,"up_successes":2,"total_successes":4},
+    {"method":"MMD","epoch":200,"down_successes":2,"up_successes":3,"total_successes":5},
+    {"method":"MMD","epoch":300,"down_successes":4,"up_successes":2,"total_successes":6},
+    {"method":"MMD","epoch":400,"down_successes":2,"up_successes":0,"total_successes":2},
+    {"method":"MMD","epoch":500,"down_successes":5,"up_successes":2,"total_successes":7},
+    {"method":"cotrain","epoch":100,"down_successes":6,"up_successes":6,"total_successes":12},
+    {"method":"cotrain","epoch":200,"down_successes":5,"up_successes":7,"total_successes":12},
+    {"method":"cotrain","epoch":300,"down_successes":6,"up_successes":5,"total_successes":11},
+    {"method":"cotrain","epoch":400,"down_successes":6,"up_successes":5,"total_successes":11},
+    {"method":"cotrain","epoch":500,"down_successes":5,"up_successes":3,"total_successes":8},
+    {"method":"source_only","epoch":100,"down_successes":0,"up_successes":0,"total_successes":0},
+    {"method":"source_only","epoch":200,"down_successes":0,"up_successes":0,"total_successes":0},
+    {"method":"source_only","epoch":300,"down_successes":0,"up_successes":0,"total_successes":0},
+    {"method":"source_only","epoch":400,"down_successes":0,"up_successes":0,"total_successes":0},
+    {"method":"source_only","epoch":500,"down_successes":0,"up_successes":0,"total_successes":0},
+    {"method":"target_only","epoch":100,"down_successes":3,"up_successes":0,"total_successes":3},
+    {"method":"target_only","epoch":200,"down_successes":2,"up_successes":0,"total_successes":2},
+    {"method":"target_only","epoch":300,"down_successes":3,"up_successes":0,"total_successes":3},
+    {"method":"target_only","epoch":400,"down_successes":2,"up_successes":0,"total_successes":2},
+    {"method":"target_only","epoch":500,"down_successes":2,"up_successes":0,"total_successes":2}
+  ],
+  "source_result_sha256": "ac4ce27c3753392d2ad12c4df12025dedb2e1fd88575b2ca33e94ef77fbcb427"
+}

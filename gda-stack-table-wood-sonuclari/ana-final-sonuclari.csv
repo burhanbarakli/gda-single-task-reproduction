@@ -1,0 +1,6 @@
+method,checkpoint_epoch,down_successes,down_rollouts,up_successes,up_rollouts,total_successes,total_rollouts
+ot-sim2real,500,32,50,20,50,52,100
+MMD,500,21,50,9,50,30,100
+cotrain,500,29,50,19,50,48,100
+source_only,500,0,50,0,50,0,100
+target_only,500,9,50,0,50,9,100

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "experiment_id": "gda-stack-table-wood-seed1",
+  "status": "complete",
+  "task": "Stack_RL2_range",
+  "source_domain": "rgb",
+  "target_domain": "table-wood",
+  "training_seed": 1,
+  "checkpoint_epoch": 500,
+  "protocol": {
+    "down_reset_seeds": [900000, 900049],
+    "up_reset_seeds": [910000, 910049],
+    "rollouts_per_domain_per_method": 50,
+    "total_rollouts": 500,
+    "horizon": 500,
+    "terminate_on_success": true
+  },
+  "results": [
+    {"method": "ot-sim2real", "down_successes": 32, "down_rollouts": 50, "up_successes": 20, "up_rollouts": 50, "total_successes": 52, "total_rollouts": 100},
+    {"method": "MMD", "down_successes": 21, "down_rollouts": 50, "up_successes": 9, "up_rollouts": 50, "total_successes": 30, "total_rollouts": 100},
+    {"method": "cotrain", "down_successes": 29, "down_rollouts": 50, "up_successes": 19, "up_rollouts": 50, "total_successes": 48, "total_rollouts": 100},
+    {"method": "source_only", "down_successes": 0, "down_rollouts": 50, "up_successes": 0, "up_rollouts": 50, "total_successes": 0, "total_rollouts": 100},
+    {"method": "target_only", "down_successes": 9, "down_rollouts": 50, "up_successes": 0, "up_rollouts": 50, "total_successes": 9, "total_rollouts": 100}
+  ],
+  "interpretation_limits": [
+    "one training seed",
+    "one simulation task",
+    "simulation-only visual domain shift",
+    "no physical robot evaluation"
+  ],
+  "source_result_sha256": "0ad4b5dbe6330eaf310724ba158f1d71e2db0b79ba96dda09be7b50353f2cf3c"
+}
