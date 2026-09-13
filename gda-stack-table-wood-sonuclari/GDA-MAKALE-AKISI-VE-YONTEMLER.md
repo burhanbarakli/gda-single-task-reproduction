@@ -15,13 +15,15 @@ flowchart TB
     SRC --> DTW
     TGT --> DTW
 
-    DTW["DTW — Dynamic Time Warping<br/>Yörüngelerin zamansal benzerliğini hesapla"]
-    DTW --> TAS["Temporally Aligned Sampling<br/>Benzer aşamalardaki kaynak–hedef<br/>yörünge çiftlerini örnekle"]
-
-    TAS --> ENC["Ortak görsel kodlayıcı fφ<br/>RGB / nokta bulutu → gizli özellik z"]
-    ENC --> COST["Ortak maliyet matrisi C<br/>Görsel özellik uzaklığı<br/>+ proprioception uzaklığı"]
-    COST --> UOT["UOT — Unbalanced Optimal Transport<br/>Sinkhorn–Knopp ile taşıma planı Π*<br/>Eşleşmeyen örnekleri zorla eşleştirmez"]
-    UOT --> LOT["Hizalama kaybı<br/>L-UOT = ⟨Π*, C⟩"]
+    subgraph OTBRANCH["OT / UOT HİZALAMA KOLU"]
+        direction TB
+        DTW["DTW — Dynamic Time Warping<br/>Yörüngelerin zamansal benzerliğini hesapla"]
+        DTW --> TAS["Temporally Aligned Sampling<br/>Benzer aşamalardaki kaynak–hedef<br/>yörünge çiftlerini örnekle"]
+        TAS --> ENC["Ortak görsel kodlayıcı fφ<br/>RGB / nokta bulutu → gizli özellik z"]
+        ENC --> COST["Ortak maliyet matrisi C<br/>Görsel özellik uzaklığı<br/>+ proprioception uzaklığı"]
+        COST --> UOT["UOT — Unbalanced Optimal Transport<br/>Sinkhorn–Knopp ile taşıma planı Π*<br/>Eşleşmeyen örnekleri zorla eşleştirmez"]
+        UOT --> LOT["Hizalama kaybı<br/>L-UOT = ⟨Π*, C⟩"]
+    end
 
     SRC --> BC
     TGT --> BC
@@ -45,7 +47,12 @@ flowchart TB
     class DTW,TAS,COST,UOT,LOT align;
     class ENC,BC,DP,LBC,TOTAL,UPDATE learn;
     class ID,OOD test;
+    style OTBRANCH fill:#fff8ed,stroke:#d17b0f,stroke-width:3px,stroke-dasharray:8 5,color:#8a4a00;
 ```
+
+Dıştaki turuncu kesikli **OT / UOT hizalama kolu**, toplam amaç fonksiyonundaki
+`L_UOT` terimini üretir. **BC → Diffusion Policy → L_BC** hattı taklit öğrenme
+koludur; iki kol `L_total` kutusunda birleşir.
 
 Akışın temel adımları şöyledir:
 
