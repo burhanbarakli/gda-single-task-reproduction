@@ -56,17 +56,20 @@ protokolü yazılırken biliniyordu; bu nedenle tarama kısmen post-hoc ikincil 
 
 ## Dosyalar
 
+- [`GDA-MAKALE-AKISI-VE-YONTEMLER.md`](GDA-MAKALE-AKISI-VE-YONTEMLER.md):
+  makaledeki veri–eğitim–değerlendirme akışı, Mermaid diyagramları, yöntem
+  karşılaştırmaları ve kısaltmalar
 - [`ana-final-sonuclari.json`](ana-final-sonuclari.json): 500-rollout ana sonuç
 - [`ana-final-sonuclari.csv`](ana-final-sonuclari.csv): ana sonucun tablo biçimi
 - [`checkpoint-duyarlilik-sonuclari.json`](checkpoint-duyarlilik-sonuclari.json):
   25 checkpoint hücresi ve seçilen epochlar
 - [`checkpoint-duyarlilik-sonuclari.csv`](checkpoint-duyarlilik-sonuclari.csv):
   tam checkpoint matrisi
-- [`SHA256SUMS`](SHA256SUMS): bu dört sonuç dosyasının bütünlük hash'leri
+- [`SHA256SUMS`](SHA256SUMS): yayımlanan sonuç ve açıklama dosyalarının bütünlük
+  hash'leri
 
 ## Yorum sınırları
 
 Bu çalışma tek görev ve tek eğitim tohumu içerir. Rolloutlar aynı eğitilmiş politika
 içindeki başlangıç değişkenliğini ölçer; eğitimler arası değişkenliği ölçmez. Deney
 fiziksel robotta yapılmadı ve gerçek dünya sim2real sonucu olarak sunulamaz.
-

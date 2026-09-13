@@ -35,6 +35,9 @@ Tamamlanmış deneylerin çevrimdışı raporu [reports/gda-training-report.html
 Tamamlanan 500-rollout ana final testi ve 25 hücrelik checkpoint duyarlılık
 taraması [`gda-stack-table-wood-sonuclari/`](gda-stack-table-wood-sonuclari/)
 klasöründe JSON, CSV ve Türkçe yorumlarıyla yayımlanmıştır.
+Makaledeki GDA eğitim akışı, OT/UOT/DTW bileşenleri ve beş yöntemin karşılaştırmalı
+açıklaması [GDA makale akışı ve yöntemler](gda-stack-table-wood-sonuclari/GDA-MAKALE-AKISI-VE-YONTEMLER.md)
+belgesinde Mermaid diyagramlarıyla gösterilmiştir.
 
 Her eğitim için hazırlanan kısa Markdown kayıtları hem [`docs/experiments/`](docs/experiments/) altında hem de [Google Drive deney notları klasöründe](https://drive.google.com/drive/folders/1vGsubzHN8jb1d4dNg6B4scuhYRNzRWx4) bulunur. Drive klasörü paylaşılmamıştır; bağlı Google hesabıyla açılır.
 
