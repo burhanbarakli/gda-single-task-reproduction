@@ -12,24 +12,31 @@ flowchart TB
     SRC["Kaynak alan — Dsrc<br/>Çok sayıda simülasyon gösterimi"]
     TGT["Hedef alan — Dtgt<br/>Az sayıda gerçek dünya gösterimi"]
 
-    SRC --> DTW
-    TGT --> DTW
-
     subgraph OTBRANCH["OT / UOT HİZALAMA KOLU"]
         direction TB
         DTW["DTW — Dynamic Time Warping<br/>Yörüngelerin zamansal benzerliğini hesapla"]
         DTW --> TAS["Temporally Aligned Sampling<br/>Benzer aşamalardaki kaynak–hedef<br/>yörünge çiftlerini örnekle"]
-        TAS --> ENC["Ortak görsel kodlayıcı fφ<br/>RGB / nokta bulutu → gizli özellik z"]
-        ENC --> COST["Ortak maliyet matrisi C<br/>Görsel özellik uzaklığı<br/>+ proprioception uzaklığı"]
+        COST["Ortak maliyet matrisi C<br/>Görsel özellik uzaklığı<br/>+ proprioception uzaklığı"]
         COST --> UOT["UOT — Unbalanced Optimal Transport<br/>Sinkhorn–Knopp ile taşıma planı Π*<br/>Eşleşmeyen örnekleri zorla eşleştirmez"]
         UOT --> LOT["Hizalama kaybı<br/>L-UOT = ⟨Π*, C⟩"]
     end
 
+    subgraph BCBRANCH["BC / POLİTİKA ÖĞRENME KOLU"]
+        direction TB
+        BC["BC mini-batch<br/>Kaynak + hedef uzman gösterimleri"]
+        DP["Diffusion Policy / UNet<br/>Gürültülü eylem dizisinden<br/>eklenen gürültüyü tahmin et"]
+        DP --> LBC["Davranış klonlama kaybı<br/>L-BC = MSE(ε̂, ε)"]
+    end
+
+    SRC --> DTW
+    TGT --> DTW
     SRC --> BC
     TGT --> BC
-    BC["BC — Behavior Cloning<br/>Kaynak ve hedef uzman hareketlerini taklit et"]
-    BC --> DP["DP — Diffusion Policy<br/>Gözlemden eylem dizisi üret"]
-    DP --> LBC["Taklit kaybı L-BC"]
+
+    TAS --> ENC["Paylaşılan görsel kodlayıcı fφ<br/>ResNet18: görüntü o → gizli özellik z"]
+    BC --> ENC
+    ENC --> COST
+    ENC --> DP
 
     LOT --> TOTAL
     LBC --> TOTAL
@@ -48,11 +55,13 @@ flowchart TB
     class ENC,BC,DP,LBC,TOTAL,UPDATE learn;
     class ID,OOD test;
     style OTBRANCH fill:#fff8ed,stroke:#d17b0f,stroke-width:3px,stroke-dasharray:8 5,color:#8a4a00;
+    style BCBRANCH fill:#effaf2,stroke:#318a4f,stroke-width:3px,stroke-dasharray:8 5,color:#205f36;
 ```
 
 Dıştaki turuncu kesikli **OT / UOT hizalama kolu**, toplam amaç fonksiyonundaki
-`L_UOT` terimini üretir. **BC → Diffusion Policy → L_BC** hattı taklit öğrenme
-koludur; iki kol `L_total` kutusunda birleşir.
+`L_UOT` terimini üretir. Yeşil kesikli **BC / Politika Öğrenme Kolu**, robotun
+uzman eylemlerini taklit etmesini sağlayan `L_BC` terimini üretir. İki kol aynı
+görsel kodlayıcıyı günceller ve `L_total` kutusunda birleşir.
 
 Akışın temel adımları şöyledir:
 
@@ -78,6 +87,29 @@ Makalenin kuramsal anlatımı görsel özellik–eylem çiftlerinin ortak dağı
 hizalar. Pratik uygulama, simülasyon ve gerçek robot eylem temsilleri arasındaki
 farklardan etkilenmemek için eylem uzaklığı yerine robotun proprioceptive durumunu
 kullanır.
+
+## BC / politika öğrenme kolunda ne çalışır?
+
+**BC — Behavior Cloning (Davranış Klonlama)**, robotun görevi gerçekleştirmek
+için hangi hareketleri yapacağını öğrenen ana politika eğitimidir. Bu çalışma
+pekiştirmeli öğrenme değildir; ödül sinyali veya çevrim içi keşif kullanmaz.
+
+1. Uzman gösteriminden görüntü `o`, robotun proprioceptive durumu `x` ve gerçek
+   eylem dizisi `a` alınır.
+2. ResNet18 görsel kodlayıcı görüntüyü gizli özellik `z = fφ(o)` biçimine getirir.
+3. Eğitim sırasında uzman eylem dizisine rastgele Gauss gürültüsü `ε` eklenir.
+4. Diffusion Policy'nin UNet modeli, `z`, `x` ve difüzyon zaman adımını kullanarak
+   eklenen gürültüyü `ε̂` olarak tahmin eder.
+5. Davranış klonlama kaybı `L_BC = MSE(ε̂, ε)` ile hesaplanır. Bu kayıp hem
+   politika ağını hem de paylaşılan görsel kodlayıcıyı günceller.
+6. Rollout sırasında uzman eylemi, BC kaybı, DTW veya UOT hesaplanmaz. Eğitilmiş
+   kodlayıcı ve Diffusion Policy, rastgele gürültüyü yinelemeli olarak temizleyip
+   uygulanacak eylem dizisini üretir.
+
+OT kolu aynı davranış aşamasına ait kaynak ve hedef görüntülerinin benzer özellik
+üretmesini sağlar. BC kolu bu özelliklerden Stack görevini gerçekleştirecek eylemi
+öğrenir. OT kolu kaldırılıp yalnız kaynak ve hedef BC kaybı bırakıldığında yöntem
+**Co-training** olur.
 
 ## Karşılaştırılan yöntemler
 
